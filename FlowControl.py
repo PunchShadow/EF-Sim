@@ -41,7 +41,7 @@ def FlowGid(G,gid):
                     sys.exit(2)
                 total_energy+=edge[2]['energy']
                 cycle_time=max(cycle_time,edge[2]['time'])
-            data['output_gid']=gid
+                data['output_gid']=gid
 
 def GraphCheck(G):
     for node in G.nodes:
