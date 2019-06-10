@@ -78,7 +78,7 @@ def createRecGraph(*arg):
 
     return G
 
-def eyeriss(config): #12*14
+def eyeriss(row_id,col_id): #12*14
     G = nx.MultiDiGraph()
     G.add_node('G') # Global buffer's node
     for i in range(12*14):
@@ -87,9 +87,9 @@ def eyeriss(config): #12*14
         for i in range(12):
             v=i*14+j
             G.add_edge('G', v, gid=i, energy=Bus_energy, time=Bus_cycle) # filter edge
-            G.add_edge('G', v, gid=12+config[i][j], energy=1.0, time=0.4) # imap edge
+            G.add_edge('G', v, gid=12+col_id[i][j]+row_id[i]*32, energy=1.0, time=0.4) # imap edge
             if(i!=0):
-                G.add_edge(v, v-14, gid=50, energy=1.0, time=0.3) # omap edge
+                G.add_edge(v, v-14, gid=400, energy=1.0, time=0.3) # omap edge
     return G
 
 
