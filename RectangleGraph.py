@@ -92,10 +92,22 @@ def eyeriss(row_id,col_id): #12*14
                 G.add_edge(v, v-14, gid=400, energy=1.0, time=0.3) # omap edge
     return G
 
+def arrayToGraph(array):
+    G = nx.MultiDiGraph()
+    G.add_node('G') # Global buffer's node
+    l=len(array)
+    for i in range(l):
+        G.add_node(i)
+    for i in range(l):
+        for j in range(l):
+            if type(array[i][j])==list:
+                for x in array[i][j]:
+                    G.add_edge(i, j, gid=x, energy=Bus_energy, time=Bus_cycle)
+    return G
+
 
 # edgelist example: [(2,3), (1,4), (3,9), ....]
 def addGroup(graph, group, *edgelist):
     graph.add_edges_from(edgelist, group = group)
 
 
-G = createRecGraph(2,5,5)
