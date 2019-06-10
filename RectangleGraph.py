@@ -11,17 +11,17 @@ Mem = 'MemoryNode'
 Bus = 'Bus'
 Global = 'DRAM'
 
-PE_sram = config.get(PE, 'SRAMsize')
-PE_energy = config.get(PE, 'EnergyCost')
-PE_cycle = config.get(PE, 'ComputTime')
-Mem_dram = config.get(Mem, 'DRAMsize')
-Mem_energy = config.get(Mem, 'EnergyCost')
-Mem_cycle = config.get(Mem, 'TransferTime')
-Bus_cycle = config.get(Bus, 'Latency')
-Bus_energy = config.get(Bus, 'EnergyCost')
-Global_dram = config.get(Global, 'DRAMsize')
-Global_energy = config.get(Global, 'EnergyCost')
-Global_cycle = config.get(Global, 'TransferTime')
+PE_sram = float(config.get(PE, 'SRAMsize'))
+PE_energy = float(config.get(PE, 'EnergyCost'))
+PE_cycle = float(config.get(PE, 'ComputTime'))
+Mem_dram = float(config.get(Mem, 'DRAMsize'))
+Mem_energy = float(config.get(Mem, 'EnergyCost'))
+Mem_cycle = float(config.get(Mem, 'TransferTime'))
+Bus_cycle = float(config.get(Bus, 'Latency'))
+Bus_energy = float(config.get(Bus, 'EnergyCost'))
+Global_dram = float(config.get(Global, 'DRAMsize'))
+Global_energy = float(config.get(Global, 'EnergyCost'))
+Global_cycle = float(config.get(Global, 'TransferTime'))
 
 # Initialize the graph
 # arg[0] = dimension (determine how many arguments are there)
