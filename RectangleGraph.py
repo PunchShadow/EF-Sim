@@ -37,14 +37,14 @@ def createRecGraph(*arg):
         print("Initialization fault !! Please check your argument numbers!")
         sys.exit(1)
     G = nx.MultiDiGraph()
-    G.add_node('G') # Global buffer's node
+    G.add_node('G', type = 'Memory') # Global buffer's node
     node_num = 1
-    
+
     for i in range(arg[0]):
         node_num *= arg[i+1]
     for i in range(node_num):
-        G.add_node(i)
-    
+        G.add_node(i, type = 'PE')
+
     # Initialize the edges of all nodes.
     # 2D matrix
     if(arg[0] == 2):
@@ -80,9 +80,9 @@ def createRecGraph(*arg):
 
 def eyeriss(row_id,col_id): #12*14
     G = nx.MultiDiGraph()
-    G.add_node('G') # Global buffer's node
+    G.add_node('G', type = 'Memory') # Global buffer's node
     for i in range(12*14):
-        G.add_node(i)
+        G.add_node(i, type= 'PE')
     for j in range(14):
         for i in range(12):
             v=i*14+j
@@ -94,10 +94,10 @@ def eyeriss(row_id,col_id): #12*14
 
 def arrayToGraph(array):
     G = nx.MultiDiGraph()
-    G.add_node('G') # Global buffer's node
+    G.add_node('G', type = 'Memory') # Global buffer's node
     l=len(array)
     for i in range(l):
-        G.add_node(i)
+        G.add_node(i, type = 'PE')
     for i in range(l):
         for j in range(l):
             if type(array[i][j])==list:
@@ -113,5 +113,3 @@ def arrayToGraph(array):
 # edgelist example: [(2,3), (1,4), (3,9), ....]
 def addGroup(graph, group, *edgelist):
     graph.add_edges_from(edgelist, group = group)
-
-
