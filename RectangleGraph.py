@@ -103,6 +103,8 @@ def arrayToGraph(array):
             if type(array[i][j])==list:
                 for x in array[i][j]:
                     G.add_edge(i, j, gid=x, energy=Bus_energy, time=Bus_cycle)
+            else:
+                G.add_edge(i, j, gid=float(array[i][j]), energy=Bus_energy, time=Bus_cycle)
     return G
 
 
