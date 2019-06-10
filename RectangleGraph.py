@@ -109,6 +109,26 @@ def arrayToGraph(array):
                 G.add_edge(i, j, gid=int(array[i][j]), energy=Bus_energy, time=Bus_cycle)
     return G
 
+# Turn the graph to adjacency matrix with the edge's gid by using 3D list.
+def graph2Array(G):
+    relation = []
+    for node in range(MG.number_of_nodes()-1):
+        rel = []
+        for i in range(MG.number_of_nodes()-1):
+            if i in MG.successors(node):
+                # If there're more than two edges connected.
+                if(len(MG[node][i])>1):
+                    extra = []
+                    for j in range(len(MG[node][i])):
+                        extra.append(MG[node][i][j]['gid'])
+                    rel.append(extra)
+                else:
+                    rel.append(MG[node][i][0]['gid'])
+            else:
+                rel.append(0)
+
+        relation.append(rel)
+    return(relation)
 
 # edgelist example: [(2,3), (1,4), (3,9), ....]
 def addGroup(graph, group, *edgelist):
